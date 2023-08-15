@@ -1,0 +1,6 @@
+# Using indicator ID = 92605, and used public health data API to get URL
+
+X <- read.csv(url("https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=92605"))
+view(X)
+
+#Keep Areaname(GP Surgery), count(Number), all ages, persons and ComparedtoEngland (compare to the NationalAverage)
