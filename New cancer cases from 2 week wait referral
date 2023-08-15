@@ -1,0 +1,6 @@
+# New cancer cases as a result from two week referral
+# Using indicator ID = 92609, and used public health data API to get URL
+
+
+Y <- read.csv(url('https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=92609'))
+view(Y)
