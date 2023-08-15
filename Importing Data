@@ -1,1 +1,41 @@
+# install packages
+
+install.packages('dplyr')
+install.packages('tidyverse')
+install.packages('ggplot2')
+install.packages('knitr')
+
+# open packages
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+
+
+
+#Installing fingertipsR (allows to download public health data)
+# Enable repository from ropensci
+options(repos = c(
+  ropensci = 'https://ropensci.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
+
+
+install.packages('fingertipsR')
+browseVignettes("fingertipsR")
+
+
+library(fingertipsR)
+profs <- profiles()
+profs <- profs[grepl("Public Health Outcomes Framework", profs$ProfileName),]
+head(profs)
+view(profs)
+
+
+
+#Public Health Outcomes Framework is 19
+profid <- 19
+inds <- indicators(ProfileID = profid)
+print(inds[grepl("wider determinants", inds$IndicatorName), c("IndicatorID", "IndicatorName")])
+view(inds)
+
+# From this data.frame extra information on 'Percentage of cancers screened to be at stage 1 and 2 (early detection)' and filter 3 sites for ICJ.
 
