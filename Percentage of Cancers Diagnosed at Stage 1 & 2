@@ -1,1 +1,27 @@
+# indicator ID from public health data
+
+indid <- 93671
+area_types()
+#Chose lower tier local authorities 101
+df <- fingertips_data(IndicatorID = indid, AreaTypeID = 101)
+head(df)
+view(df)
+# Form box-plots using upper and lower limit
+# change numbers into percent so you can see it in x axis
+
+boxplot(df$LowerCI95.0limit,df$LowerCI99.8limit,df$UpperCI99.8limit,df$UpperCI95.0limit,
+        main = 'Percentage of cancer diagnosed at stage 1 & 2 in England',
+        xlab = 'Percentage',
+        ylab = 'Upper limits',
+        ylim = c(30,80),
+        col = 'lightblue',
+        border = 'black',
+        horizontal = TRUE,
+        notch = FALSE
+)
+
+# Filter data for Mid-South Essex, also time period from 2018-2020
+
+SouthEnd <- filter(df, AreaName == 'Southend-on-Sea')
+Time <- filter(df, Timeperiod == '2018',)
 
