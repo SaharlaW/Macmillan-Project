@@ -1,0 +1,7 @@
+# 1 to 5 year lung cancer survival rate for adults in Mid-South Essex
+# geography code = E54000026
+
+library(readxl)
+CSR <- read.xlsx(C:\Users\Saharla.Warsame\Downloads\Cancer_Survival_Rates\adultcancerfinal_ods_update051120.ods)
+
+# Then for breast, prostate and colorectal for each region, make line graph of timeline and use facet for each area

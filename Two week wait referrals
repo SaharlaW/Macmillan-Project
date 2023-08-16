@@ -1,0 +1,28 @@
+# Using indicator ID = 92605, and used public health data API to get URL
+
+X <- read.csv(url("https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=92605"))
+view(X)
+
+# Filter for Mid-South Essex using Area Code: E54000026
+
+MidSouth <- filter(X, Area.Code == 'E54000026')
+view(MidSouth)
+
+# Select the years from 2015/16 - 19/20 to 2017/18 - 21/22
+
+MidSouthEssex <- MidSouth[7:9,]
+view(MidSouthEssex)
+
+# Form boxplots of data using the upper and lower limit values
+
+
+
+# Form a line graph using count to see how much the two week wait referrals have gone up since 2016- 17.
+
+
+
+
+# Filter Data on Northeast London and during the years of 2017/18 -21/22
+
+
+

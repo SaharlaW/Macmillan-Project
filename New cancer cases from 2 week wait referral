@@ -1,0 +1,32 @@
+# New cancer cases as a result from two week referral
+# Using indicator ID = 92609, and used public health data API to get URL
+
+
+Y <- read.csv(url('https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=92609'))
+view(Y)
+
+# Filter for Mid-South Essex using Area Code: E54000026
+
+MidSouth <- filter(X, Area.Code == 'E54000026')
+view(MidSouth)
+
+# Select the years from 2015/16 - 19/20 to 2017/18 - 21/22
+
+MidSouthEssex <- MidSouth[7:9,]
+view(MidSouthEssex)
+
+Form boxplots of data using the upper and lower limit values. 
+
+{r}
+
+
+Analyse Boxplots ->
+
+Form a line graph using count to see how much the two week wait referrals have gone up since 2016- 17.
+
+{r}
+
+
+Analyse Graph -> 
+
+Summary:
