@@ -3,6 +3,19 @@
 X <- read.csv(url("https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=92605"))
 view(X)
 
+# animated line graph of all three ICJ sites
+
+Three <- filter(X, Area.Name == 'Mid and South Essex' | Area.Name == 'North East London' | Area.Name == 'North London')
+
+Final <- ggplot(Three, aes(x = Time.period.Sortable, y = Count, group = Area.Name, colour = Area.Name)) +
+  geom_line()+
+  geom_point() +
+  transition_reveal(Time.period.Sortable) +
+  ggtitle('Amount of Two Week Wait Referrals')
+
+animate(Final, duration = 5, fps = 20, width = 450, height = 450, renderer = gifski_renderer())
+
+
 # Filter for Mid-South Essex using Area Code: E54000026
 
 MidSouth <- filter(X, Area.Code == 'E54000026')
