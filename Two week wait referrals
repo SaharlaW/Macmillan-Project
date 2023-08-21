@@ -13,12 +13,23 @@ view(MidSouth)
 MidSouthEssex <- MidSouth[7:9,]
 view(MidSouthEssex)
 
-# Form boxplots of data using the upper and lower limit values
 
+# Form a line graph using count to see how much the two week wait referrals have gone up.
 
+L <- ggplot(MidSouth, aes(x = Time.period.Sortable, y = Count)) +
+  geom_line()+
+  geom_point() +
+  ggtitle('Two Week Wait Times in Mid-South Essex') +
+  transition_reveal(Time.period.Sortable) +
+  view_follow()
 
-# Form a line graph using count to see how much the two week wait referrals have gone up since 2016- 17.
+anim_save('midsouthessex.png', L)
 
+install.packages('gifski')
+install.packages('png')
+library(gifski)
+library(png)
+animate(L, duration = 5, fps = 20, width = 450, height = 450, renderer = gifski_renderer())
 
 
 
