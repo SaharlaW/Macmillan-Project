@@ -1,7 +1,39 @@
-# 1 to 5 year lung cancer survival rate for adults in Mid-South Essex
-# geography code = E54000026
+# importing excel spreadsheet
 
-library(readxl)
-CSR <- read.xlsx(C:\Users\Saharla.Warsame\Downloads\Cancer_Survival_Rates\adultcancerfinal_ods_update051120.ods)
+library("readxl")
+s <- read_excel("Cancer_Survival.xlsx")
+view(s)
 
-# Then for breast, prostate and colorectal for each region, make line graph of timeline and use facet for each area
+Survival <- read_excel("Cancer_Survival.xlsx", sheet = 'Table_2', skip = 6)
+view(Survival)
+
+
+
+# Filter Data for three ICJ Sites
+
+MS <- filter(Survival, `Geography Name` == 'Mid and South Essex')
+NL <- filter(Survival, `Geography Name` == 'North London Partners in Health and Care')
+
+
+# Filter data for 4 most common cancer types: Breast, Lung, Prostate and Colorectal
+
+finalMS <- filter(MS, `Cancer Site` == 'Breast' | `Cancer Site` == 'Lung' | `Cancer Site` == 'Colorectal' | `Cancer Site` == 'Prostate' )
+                  
+
+finalNL <- filter(NL, `Cancer Site` == 'Breast' | `Cancer Site` == 'Lung' | `Cancer Site` == 'Colorectal' | `Cancer Site` == 'Prostate' )
+
+
+# Make for Mid-south Essex and North London
+
+ggplot(finalMS, aes(x = `Cancer Site`, y =`2006-2010`, group = `Cancer Site`)) +
+  geom_boxplot(colour = 'blue') +
+  ggtitle('Survival Rate of Common Cancers in Mid-South Essex')
+
+ggplot(finalNL, aes(x = `Cancer Site`, y =`2006-2010`, group = `Cancer Site`)) +
+  geom_boxplot(colour = 'green') +
+  ggtitle('Survival Rate of Common Cancers in North London')
+
+# Make graph transition from 2006 - 2018, make into gif
+
+install.packages("imager")
+library(imager)
