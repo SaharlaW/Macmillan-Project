@@ -1,2 +1,50 @@
-# Cancer Prevelance by Tumour site in 2020
+# Importing spread sheet
+library("readxl")
 
+Prevelance <- read_excel("Cancer_Prevelance.xlsx", sheet = 10, skip = 9)
+view(Prevelance)
+
+# Cancer Prevelance in 2020 by tumour site Nationally
+
+Final_Area <- filter(Prevelance, `Area Name` == 'England')
+
+Final_Site <- filter(Final_Area,`Cancer site` == 'Breast, female' | `Cancer site` == 'Colorectal' | 
+                       `Cancer site` == 'Small cell lung cancer' | `Cancer site` == 'Non small cell lung cancer' | `Cancer site` == 'Prostate')
+
+
+ggplot(Final_Site, aes(x = `Cancer site`, y = Count)) +
+  geom_boxplot() +
+  ggtitle('Cancer Prevelance in 2020 by Tumour Site Nationally')
+
+
+
+# Filter for Mid-South Essex
+
+Mid_South <- filter(Prevelance, `Area Code` == 'E54000026')
+
+# fiter for common cancers
+
+Final_Mid <- filter(Mid_South,`Cancer site` == 'Breast, female' | `Cancer site` == 'Colorectal' | 
+`Cancer site` == 'Small cell lung cancer' | `Cancer site` == 'Non small cell lung cancer' | `Cancer site` == 'Prostate')
+
+
+# Form Graph
+
+ggplot(Final_Mid, aes(x = `Cancer site`, y = Count)) +
+  geom_boxplot() +
+  ggtitle('Cancer Prevelance in 2020 by Tumour Site for Mid-South Essex')
+
+
+
+# Filter for North London
+
+NorthL <- filter(Prevelance, `Area Code` == 'E54000028' )
+
+Final_L <- filter(NorthL,`Cancer site` == 'Breast, female' | `Cancer site` == 'Colorectal' | 
+                     `Cancer site` == 'Small cell lung cancer' | `Cancer site` == 'Non small cell lung cancer' | `Cancer site` == 'Prostate')
+
+view(Final_L)
+
+ggplot(Final_L, aes(x = `Cancer site`, y = Count)) +
+  geom_boxplot() +
+  ggtitle('Cancer Prevelance in 2020 by Tumour Site for North London')
