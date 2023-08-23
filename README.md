@@ -1,3 +1,3 @@
-# ICJ-Project
-ULP is working to increase access to integrated personalised care (IPC) which provides holistic support and proactive interventions for cancer patients. This project will be named 'Improving Cancer Journeys'.
+# HPS-Project
+ULP is working to increase access to integrated personalised care (IPC) which provides holistic support and proactive interventions for cancer patients. This project will be named 'Holisitic Personalised Support'.
 Utilising the fingertipsR package to download data on public health for percentage of cancers diagnosed at stage 1 & 2, 2 week wait referrals, cancer survival rate by tumour site and cancer prevelance by tumour site. Tumour sites being the most common cancers to be diagnosed in the UCLP region (Breast, Lung, Colorectal and Prostate) across the three sites of North Central London, North East London and Mid-South Essex.
